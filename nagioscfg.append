@@ -1,0 +1,27 @@
+
+## Timeperiods
+cfg_file=/etc/nagiosql/timeperiods.cfg
+
+## Commands
+cfg_file=/etc/nagiosql/commands.cfg
+
+## Contacts
+cfg_file=/etc/nagiosql/contacts.cfg
+cfg_file=/etc/nagiosql/contactgroups.cfg
+cfg_file=/etc/nagiosql/templates.cfg
+
+## Hosts
+cfg_dir=/etc/nagiosql/hosts
+cfg_file=/etc/nagiosql/hosttemplates.cfg
+cfg_file=/etc/nagiosql/hostgroups.cfg
+cfg_file=/etc/nagiosql/hostextinfo.cfg
+cfg_file=/etc/nagiosql/hostescalations.cfg
+cfg_file=/etc/nagiosql/hostdependencies.cfg
+
+## Services
+cfg_dir=/etc/nagiosql/services
+cfg_file=/etc/nagiosql/servicetemplates.cfg
+cfg_file=/etc/nagiosql/servicegroups.cfg
+cfg_file=/etc/nagiosql/serviceextinfo.cfg
+cfg_file=/etc/nagiosql/serviceescalations.cfg
+cfg_file=/etc/nagiosql/servicedependencies.cfg
