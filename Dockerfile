@@ -20,15 +20,13 @@ ADD nagiosql.conf /etc/apache2/conf-available/nagiosql.conf
 RUN a2enconf nagiosql
 
 # Configure
+RUN ln -s /usr/local/nagios/etc /etc/nagios
+ADD settings.php /usr/local/nagiosql/config/settings.php
+ADD etc /etc/nagiosql
 ADD nagioscfg.append /nagioscfg.append
 ADD confignagiosql.sh /confignagiosql.sh
 RUN /confignagiosql.sh
 RUN /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
-
-# Patch the entrypoint script
-RUN sed -e 's/\/usr\/local\/nagios\/etc\/objects\/contacts.cfg/\/etc\/nagiosql\/contacts.cfg/' /entrypoint.sh > tmp.sh
-RUN mv /tmp.sh entrypoint.sh
-RUN chmod +x entrypoint.sh
 
 # Patch PHP's config
 RUN sed -e 's/;date.timezone =/date.timezone = UTC/' /etc/php5/apache2/php.ini > /tmp.ini

@@ -8,7 +8,7 @@ db:
 nagios:
    build: .
    environment:
-      NAGIOSADM_EMAIL: mhv@tmnet.dk   # Nagios web-admin's email
+      NAGIOSADM_EMAIL: mhv@tmnet.dk   # Nagios web-admin's email (ignored)
       NAGIOSADM_PW: nagios            # Nagios web-admin's password
    ports:
       - "10080:80"
