@@ -1,6 +1,6 @@
 # Nagios server with web config UI
 
-FROM mhvelplund/nagios
+FROM mhvelplund/nagios:1.0.2
 MAINTAINER Mads Hvelplund "mhv@tmnet.dk"
 
 ## Install packages
@@ -9,9 +9,8 @@ RUN apt-get update -qq
 RUN apt-get install -y php5-mysqlnd
 
 # Download NagiosQL
-RUN mkdir download
+ADD http://downloads.sourceforge.net/project/nagiosql/nagiosql/NagiosQL%203.2.0/nagiosql_320.tar.gz /download/nagiosql_320.tar.gz
 WORKDIR /download
-RUN wget http://downloads.sourceforge.net/project/nagiosql/nagiosql/NagiosQL%203.2.0/nagiosql_320.tar.gz
 RUN tar xvzf nagiosql_320.tar.gz
 WORKDIR /
 
