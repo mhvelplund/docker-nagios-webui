@@ -1,15 +1,15 @@
 db:
    image: mysql:5.5
    environment:
-      MYSQL_ROOT_PASSWORD: c80b3c7a9f9b
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: nagiosql_user
       MYSQL_PASSWORD: nagiosql
       MYSQL_DATABASE: db_nagiosql_v32
 nagios:
    build: .
    environment:
-      NAGIOSADM_EMAIL: mhv@tmnet.dk   # Nagios web-admin's email (ignored)
-      NAGIOSADM_PW: nagios            # Nagios web-admin's password
+      NAGIOSADM_EMAIL: this.is.ignored@email.com 
+      NAGIOSADM_PW: nagios
    ports:
       - "10080:80"
    links:

@@ -1,27 +1,28 @@
 # NagiosQL
 
-**NB: This container does not currently work exactly as intended ;)**
-
 This container extends the "``mhvelplund/nagios``" container by adding the configuration frontend, [NagiosQL](http://www.nagiosql.org).
 
-The first time the application is started, it configures the email and password for the local "nagiosadmin" account. To set these start the container as follows:
+To run, this container needs a MySQL 5.5 container to be linked with the alias "db". A [Docker Compose](https://docs.docker.com/compose/) configuration has been provided to help.
 
-    docker run -dP -e NAGIOSADM_PW=mysupersecretpassword -e NAGIOSADM_EMAIL=email@server.com mhvelplund/nagios-webui
+With DC, the container can be started by typing:
 
-On subsequent runs, only the "docker run" statement is needed.
+    docker-compose up -d
 
-    docker run -dP mhvelplund/nagios-webui
+This starts the containers in daemon mode, and opens a web-server on port 10080 of the Docker host.
 
-The container exposes port 80. Check "``docker ps``"" to see which port it is mapped to.
+The first time the container is started, NagiosQL must be configure. Simply go to the following URL, "``http://<dockerhost>:10080/nagiosql``" and complete the setup wizard. 
 
-Once up and running, the Nagios server can be reached on the url "``http://<dockerhostip>/nagios``" with the login "nagiosadmin" and the password chosen during setup.
+* Make sure "Local hostname or IP address" is set to "localhost"
+* Set "Administrative Database Password" to "root". It must match the MySQL root password defined in the compose file), and check all the boxes
+* Check the box "Drop database if already exists"
+* Pick an "Initial NagiosQL Password" and retype it below
+* Check the box "Import Nagios sample config"
+* Check the box "Create NagiosQL config paths"
+* Click next twice
 
-NagiosQL is exposed on the same port at the address "``http://<dockerhostip>/nagiosql``" with the same credentials.
+NagiosQL is now configured.
 
-## Setup
+NagiosQL runs on "``http://<dockerhost>:10080/nagiosql``"
+Nagios runs on "``http://<dockerhost>:10080/nagios``"
 
-On the first visit to NagiosQL, the server will enter a configuration wizard.
-
-* Click "Start installation"
-* Verify that there a no red icons for missing dependencies and click "Next"
-* _TODO_
+The login username for Nagios is "nagiosadm", and the password is whatever the "NAGIOSADM_PW" is set to in the Compose file (default: nagios).
