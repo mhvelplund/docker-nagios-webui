@@ -21,6 +21,8 @@ RUN a2enconf nagiosql
 
 # Configure
 RUN ln -s /usr/local/nagios/etc /etc/nagios
+RUN ln -s /usr/local/nagios/var /var/nagios
+RUN ln -s /usr/local/nagios /opt/nagios
 ADD settings.php /usr/local/nagiosql/config/settings.php
 ADD etc /etc/nagiosql
 ADD nagioscfg.append /nagioscfg.append
